@@ -11,7 +11,7 @@ interface Props {
 const GameCard = ({ game }: Props) => {
   return (
     <div>
-      <Card borderRadius={10} overflow="hidden">
+      <Card width="300px" borderRadius={10} overflow="hidden">
         {/** We set overflow to hidden to ensure the border radius is applied to the top of each cards */}
         <Image src={getCroppedImageUrl(game.background_image)} />
         <CardBody>

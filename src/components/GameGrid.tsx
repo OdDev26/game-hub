@@ -2,9 +2,11 @@ import useGames from "../hooks/useGames";
 
 import { SimpleGrid, Text } from "@chakra-ui/react";
 import GameCard from "./GameCard";
+import GameCardSkeleton from "./GameCardSkeleton";
 
 const GameGrid = () => {
-  const { gameData, error } = useGames();
+  const { gameData, error, isLoading } = useGames();
+  const skeletons = [1, 2, 3, 4, 5, 6];
   return (
     <>
       {error && <Text color="red">{error}</Text>}
@@ -15,6 +17,7 @@ const GameGrid = () => {
       >
         {" "}
         {/** With this on small screens(e.g a mobile device) we would have 1 column while on medium screens e.g tablet we would have 2 columns and so on */}
+        {isLoading && skeletons.map((item) => <GameCardSkeleton key={item} />)}
         {gameData.map((game) => (
           <GameCard key={game.id} game={game} />
         ))}

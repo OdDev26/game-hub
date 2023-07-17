@@ -34,7 +34,7 @@ const PlatformIconList = ({ platforms }: Props) => {
   };
   return (
     <div>
-      <HStack marginY={1}>
+      <HStack marginY={"10px"}>
         {" "}
         {/** This translates to 1 X 4 =4px vertical margin */}
         {platforms.map((platform) => (

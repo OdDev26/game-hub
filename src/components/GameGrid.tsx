@@ -14,7 +14,7 @@ const GameGrid = () => {
       <SimpleGrid
         columns={{ sm: 1, md: 2, lg: 3, xl: 5 }}
         padding="10px"
-        spacing={10}
+        spacing={3} /**This handles the space between the GameCards**/
       >
         {" "}
         {/** With this on small screens(e.g a mobile device) we would have 1 column while on medium screens e.g tablet we would have 2 columns and so on */}

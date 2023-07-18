@@ -16,6 +16,10 @@ function App() {
           base: `"nav  main"`, // defines columns (nav & main) to show on small screens
           lg: `"nav nav" "aside main"`, // specifies that we want to see all columns (nav, aside and main) on large screens only (With size above 1024px)
         }}
+        templateColumns={{
+          base: "1fr", // This means we want each column to stretch and occupy the available space  (This results to a fixed column size
+          lg: "200px 1fr", // This means we want the first column to have a size of 200px and the second column to occupy the available space (This results to a fixed column size)
+        }} // We use this to specify column sizes
       >
         <GridItem area="nav">
           <NavBar />
@@ -23,7 +27,7 @@ function App() {
         <Show above="lg">
           {" "}
           {/**This ensures aside area is only shown on large screens */}
-          <GridItem area="aside">
+          <GridItem area="aside" paddingX={5}>
             <GenreList />
           </GridItem>
         </Show>

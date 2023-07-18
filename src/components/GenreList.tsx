@@ -1,16 +1,26 @@
 import React from "react";
 import useGenres, { Genre } from "../hooks/useGenres";
 import useData from "../hooks/useData";
-
+import { HStack, Image, List, ListItem, Text } from "@chakra-ui/react";
+import getCroppedImageUrl from "./image-url";
 const GenreList = () => {
   const { data } = useGenres();
   return (
     <>
-      <ul>
+      <List>
         {data.map((genre) => (
-          <li key={genre.name}>{genre.name}</li>
+          <ListItem key={genre.name} paddingY="5px">
+            <HStack>
+              <Image
+                borderRadius={8}
+                boxSize="32px"
+                src={getCroppedImageUrl(genre.image_background)}
+              />
+              <Text fontSize="lg">{genre.name}</Text>
+            </HStack>
+          </ListItem>
         ))}
-      </ul>
+      </List>
     </>
   );
 };

@@ -22,6 +22,7 @@ export interface GameQuery {
   platform: Platform | null;
   count: number;
   sortOrder: string;
+  searchText: string;
 }
 
 function App() {
@@ -40,7 +41,11 @@ function App() {
         }} // We use this to specify column sizes
       >
         <GridItem area="nav">
-          <NavBar />
+          <NavBar
+            onSearch={(searchText) =>
+              setGameQuery({ ...gameQuery, searchText })
+            }
+          />
         </GridItem>
         <Show above="lg">
           {" "}

@@ -14,6 +14,7 @@ import { GameData } from "../hooks/useGames";
 import { Platform } from "../hooks/useGames";
 import { HStack, Icon, Text } from "@chakra-ui/react";
 import { IconType } from "react-icons";
+import PlatformSelector from "./PlatformSelector";
 interface Props {
   platforms: Platform[];
 }
@@ -43,7 +44,7 @@ const PlatformIconList = ({ platforms }: Props) => {
             key={platform.id}
             color="gray.500"
           /> /** So the icon color is different from the Card heading color */
-        ))}
+        ))}{" "}
       </HStack>
     </div>
   );

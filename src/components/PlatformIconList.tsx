@@ -40,6 +40,7 @@ const PlatformIconList = ({ platforms }: Props) => {
         {platforms.map((platform) => (
           <Icon
             as={iconMap[platform.slug]}
+            key={platform.id}
             color="gray.500"
           /> /** So the icon color is different from the Card heading color */
         ))}

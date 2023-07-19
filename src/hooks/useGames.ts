@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import apiClient from "../services/api-client";
 import { CanceledError } from "axios";
 import useData from "./useData";
+import { Genre } from "./useGenres";
 
 export interface Platform {
   id: number;
@@ -18,6 +19,9 @@ export interface GameData {
 }
 // To specify what we need for api call response
 
-const useGames = () => useData<GameData>("/games");
+const useGames = (selectedGenre: Genre | null) =>
+  useData<GameData>("/games", { params: { genres: selectedGenre?.id } }, [
+    selectedGenre?.id,
+  ]); // with the AxiosRequestConfig param we can pass a query param to the backend. we use ? because selectedGenre can be null
 
 export default useGames;

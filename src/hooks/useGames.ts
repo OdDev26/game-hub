@@ -19,9 +19,14 @@ export interface GameData {
 }
 // To specify what we need for api call response
 
-const useGames = (selectedGenre: Genre | null) =>
-  useData<GameData>("/games", { params: { genres: selectedGenre?.id } }, [
-    selectedGenre?.id,
-  ]); // with the AxiosRequestConfig param we can pass a query param to the backend. we use ? because selectedGenre can be null
+const useGames = (
+  selectedGenre: Genre | null,
+  selectedPlatform: Platform | null
+) =>
+  useData<GameData>(
+    "/games",
+    { params: { genres: selectedGenre?.id, platforms: selectedPlatform?.id } },
+    [selectedGenre?.id, selectedPlatform?.id]
+  ); // with the AxiosRequestConfig param we can pass a query param to the backend. we use ? because selectedGenre can be null
 
 export default useGames;

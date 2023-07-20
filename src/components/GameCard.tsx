@@ -15,16 +15,16 @@ const GameCard = ({ game }: Props) => {
         {/** We set overflow to hidden to ensure the border radius is applied to the top of each cards */}
         <Image src={getCroppedImageUrl(game.background_image)} />
         <CardBody>
-          <Heading paddingLeft="-1px" fontSize="2xl">
-            {game.name}
-          </Heading>{" "}
-          {/** We use 2xl to make the font size smaller */}
-          <HStack justifyContent="space-between">
+          <HStack justifyContent="space-between" marginBottom={3}>
             <PlatformIconList
               platforms={game.parent_platforms.map((p) => p.platform)}
             />
             <CriticScore score={game.metacritic} />
           </HStack>
+          <Heading textAlign="left" fontSize="2xl">
+            {game.name}
+          </Heading>{" "}
+          {/** We use 2xl to make the font size smaller */}
         </CardBody>
       </Card>
     </div>

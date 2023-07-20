@@ -2,8 +2,10 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import "./App.css";
 import {
+  Box,
   Button,
   ButtonGroup,
+  Flex,
   Grid,
   GridItem,
   HStack,
@@ -16,6 +18,7 @@ import { Genre } from "./hooks/useGenres";
 import PlatformSelector from "./components/PlatformSelector";
 import { Platform } from "./hooks/useGames";
 import SortSelector from "./components/SortSelector";
+import GameHeading from "./components/GameHeading";
 
 export interface GameQuery {
   genre: Genre | null;
@@ -58,27 +61,27 @@ function App() {
           </GridItem>
         </Show>
         <GridItem area="main">
-          <HStack
-            spacing={5}
-            alignItems="flex-start"
-            marginLeft={3}
-            marginBottom={5}
-          >
-            {" "}
-            {/**spacing is used to apply spacing between the 'HStack' children */}
-            <PlatformSelector
-              selectedPlatform={gameQuery.platform}
-              onSelectPlatform={(platform) =>
-                setGameQuery({ ...gameQuery, platform })
-              }
-            />
-            <SortSelector
-              sortOrder={gameQuery.sortOrder}
-              onSortOrderSelect={(sortOrder) =>
-                setGameQuery({ ...gameQuery, sortOrder })
-              }
-            />
-          </HStack>
+          <Box marginLeft={3}>
+            <Flex justifyContent="flex-start" marginY={5} fontSize="5xl">
+              <GameHeading gameQuery={gameQuery} />
+            </Flex>
+            <HStack spacing={5} alignItems="flex-start" marginBottom={5}>
+              {" "}
+              {/**spacing is used to apply spacing between the 'HStack' children */}
+              <PlatformSelector
+                selectedPlatform={gameQuery.platform}
+                onSelectPlatform={(platform) =>
+                  setGameQuery({ ...gameQuery, platform })
+                }
+              />
+              <SortSelector
+                sortOrder={gameQuery.sortOrder}
+                onSortOrderSelect={(sortOrder) =>
+                  setGameQuery({ ...gameQuery, sortOrder })
+                }
+              />
+            </HStack>
+          </Box>
 
           <GameGrid gameQuery={gameQuery} />
         </GridItem>

@@ -3,7 +3,9 @@ import useGenres, { Genre } from "../hooks/useGenres";
 import useData from "../hooks/useData";
 import {
   Button,
+  Flex,
   HStack,
+  Heading,
   Image,
   List,
   ListItem,
@@ -23,16 +25,24 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
     return <Spinner />; /** This displays a spinner if component is loading */
   return (
     <>
+      <Flex justifyContent="flex-start">
+        <Heading marginBottom={3} fontSize="2xl" as="h1">
+          Genres
+        </Heading>
+      </Flex>
       <List>
         {data.map((genre) => (
           <ListItem key={genre.name} paddingY="5px">
             <HStack>
               <Image
                 borderRadius={8}
+                objectFit="cover" // This ensures the images maintain their aspect ratio making them display properly
                 boxSize="32px"
                 src={getCroppedImageUrl(genre.image_background)}
               />
               <Button
+                whiteSpace="normal" /** This ensures the button text doesn't overlap with the image */
+                textAlign="left" /** To ensure the button text is left aligned */
                 fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"} // For making a button bold
                 onClick={() => onSelectGenre(genre)}
                 variant="link"

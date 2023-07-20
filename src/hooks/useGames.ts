@@ -17,6 +17,7 @@ export interface GameData {
   background_image: string;
   parent_platforms: { platform: Platform }[];
   metacritic: number;
+  rating_top: number;
 }
 // To specify what we need for api call response
 
